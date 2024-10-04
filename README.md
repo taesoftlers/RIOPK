@@ -4,11 +4,13 @@
 # Лабораторная работа №1
 
 Контейнерный уровень архитектуры в нотации С4
-![контейнерный уровень](https://github.com/user-attachments/assets/3fa0a514-8e44-4a29-b0e7-15c4dbdb9be0)
+![контейнерный уровень](https://github.com/user-attachments/assets/2f26aa90-4e21-46e1-867d-852e94371621)
+
 
 
 Компонентный уровень архитектуры в нотации С4
-![компонентный уровень](https://github.com/user-attachments/assets/e4619c7d-58eb-4233-b022-eb469a61b1ad)
+![компонентный уровень](https://github.com/user-attachments/assets/3d152296-9b1c-4838-a3bd-aa97e4f5a15c)
+
 
 
 UI Kit для программного средства 
