@@ -88,7 +88,7 @@ User-flow диаграмма программного средства (Техн
 
 ## Ссылка на документацию
 
-[http://localhost:8080/swagger-ui/index.html#/](https://github.com/taesoftlers/RIOPK_HiringCandidates/blob/main/API%20Documentation)
+https://github.com/taesoftlers/RIOPK_HiringCandidates/blob/main/API%20Documentation
 
 ## Тестирование
 
