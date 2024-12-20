@@ -76,9 +76,54 @@ User-flow диаграмма программного средства (Руко
 User-flow диаграмма программного средства (Технический специалист)
 ![user-flow (техспец)](https://github.com/user-attachments/assets/a0b1e9b6-b7af-4647-9301-e51f6bdf1a51)
 
+# Документация
 
+![image](https://github.com/user-attachments/assets/15b6bf92-3c6a-4666-8f04-d6c9b206a638)
 
+![image](https://github.com/user-attachments/assets/ee946775-dd2c-4a44-b515-b29b470c0ee5)
 
+![image](https://github.com/user-attachments/assets/84ac28a5-8e28-4b61-969c-518ec3131009)
 
+![image](https://github.com/user-attachments/assets/1613c9ab-facb-4281-8149-22baeefc55e2)
 
+## Ссылка на документацию
+
+http://localhost:8080/swagger-ui/index.html#/
+
+# Тестирование
+
+## Unit-тест для проверки создания резюме
+
+    @Test
+    void saveResume_ShouldReturnCreatedResume() throws Exception {
+        Resume resume = new Resume();
+        resume.setResumeID(1L);
+        resume.setResumeFile(mock(Blob.class));
+
+        when(resumeService.saveResume(resume)).thenReturn(resume);
+
+        ResponseEntity<Resume> response = resumeController.saveResume(resume);
+
+        assertEquals(201, response.getStatusCodeValue());
+        assertEquals(resume, response.getBody());
+        verify(resumeService, times(1)).saveResume(resume);
+    }
+
+![image](https://github.com/user-attachments/assets/e7c66479-bd76-4aa0-8fd6-a71ecf1fd763)
+
+## Интеграционный тест для проверки сохранения резюме
+
+    @Test
+    public void testSaveResume() throws Exception {
+        Resume resume = new Resume();
+        resume.setResumeFile(null); // Example: You can replace null with a Blob for actual testing
+
+        mockMvc.perform(post("/api/v1/resume")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(resume)))
+                .andExpect(status().isCreated())
+                .andExpect(jsonPath("$.resumeID", notNullValue()));
+    }
+
+![image](https://github.com/user-attachments/assets/eb7b4d64-b83e-488a-998d-684769b32403)
 
