@@ -76,7 +76,7 @@ User-flow диаграмма программного средства (Руко
 User-flow диаграмма программного средства (Технический специалист)
 ![user-flow (техспец)](https://github.com/user-attachments/assets/a0b1e9b6-b7af-4647-9301-e51f6bdf1a51)
 
-# Документация
+## Документация
 
 ![image](https://github.com/user-attachments/assets/15b6bf92-3c6a-4666-8f04-d6c9b206a638)
 
@@ -90,9 +90,9 @@ User-flow диаграмма программного средства (Техн
 
 http://localhost:8080/swagger-ui/index.html#/
 
-# Тестирование
+## Тестирование
 
-## Unit-тест для проверки создания резюме
+### Unit-тест для проверки создания резюме
 
     @Test
     void saveResume_ShouldReturnCreatedResume() throws Exception {
@@ -111,7 +111,7 @@ http://localhost:8080/swagger-ui/index.html#/
 
 ![image](https://github.com/user-attachments/assets/e7c66479-bd76-4aa0-8fd6-a71ecf1fd763)
 
-## Интеграционный тест для проверки сохранения резюме
+### Интеграционный тест для проверки сохранения резюме
 
     @Test
     public void testSaveResume() throws Exception {
