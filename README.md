@@ -66,15 +66,16 @@ UI Kit для программного средства
 ### User-flow диаграммы
 
 User-flow диаграмма программного средства (Hr-менеджер)
-![user-flow (hr-менеджер)](https://github.com/user-attachments/assets/6b9ebed4-f358-4e4a-b9ec-d99b956174a0)
+![user-flow (hr-менеджер)](https://github.com/user-attachments/assets/323eb2c6-7cc2-406d-8807-779e4ece5eae)
 
 
 User-flow диаграмма программного средства (Руководитель отдела)
-![user-flow (руководитель)](https://github.com/user-attachments/assets/e51a35dc-ea9a-4168-aede-e873dcc49871)
+![user-flow (руководитель)](https://github.com/user-attachments/assets/21c42c37-4900-4e7d-ac1d-9140f3556893)
 
 
 User-flow диаграмма программного средства (Технический специалист)
-![user-flow (техспец)](https://github.com/user-attachments/assets/a0b1e9b6-b7af-4647-9301-e51f6bdf1a51)
+![user-flow (тех  специалист)](https://github.com/user-attachments/assets/e3b177af-f299-46b8-adbc-cfdfe7b8c81d)
+
 
 ## Документация
 
