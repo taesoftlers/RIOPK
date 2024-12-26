@@ -60,6 +60,22 @@
 
 ## Пользовательский интерфейс
 
+### Примеры экранов UI
+
+![image](https://github.com/user-attachments/assets/b17c6434-387a-47f8-8210-823f21f48a86)
+
+![image](https://github.com/user-attachments/assets/fa66a032-a5bd-4ad2-931c-f819c659f9a6)
+
+![image](https://github.com/user-attachments/assets/6f5e13b8-1ff7-4498-90de-701beab0a858)
+
+![image](https://github.com/user-attachments/assets/1f9a3a0c-c550-4eef-a284-22e7c77350b9)
+
+![image](https://github.com/user-attachments/assets/033c0085-8a1f-48ea-a9c4-5a0e9b689f87)
+
+![image](https://github.com/user-attachments/assets/1155b5ae-326e-4715-aa3a-f8854e621ebd)
+
+![image](https://github.com/user-attachments/assets/accdf24d-9258-438a-8bb1-72a84561f9a0)
+
 UI Kit для программного средства 
 ![ui kit](https://github.com/user-attachments/assets/d6e4c41d-c6ef-4dc8-b5ee-086148b92cb2)
 
@@ -127,4 +143,153 @@ https://github.com/taesoftlers/RIOPK_HiringCandidates/blob/main/API%20Documentat
     }
 
 ![image](https://github.com/user-attachments/assets/eb7b4d64-b83e-488a-998d-684769b32403)
+
+## Безопасность
+
+@Configuration
+@EnableWebSecurity
+public class SecurityConfig {
+
+    private final UserDetailsServiceImp userDetailsServiceImp;
+
+    private final JwtAuthenticationFilter jwtAuthenticationFilter;
+
+    private final CustomLogoutHandler logoutHandler;
+
+    public SecurityConfig(UserDetailsServiceImp userDetailsServiceImp,
+                          JwtAuthenticationFilter jwtAuthenticationFilter,
+                          CustomLogoutHandler logoutHandler) {
+        this.userDetailsServiceImp = userDetailsServiceImp;
+        this.jwtAuthenticationFilter = jwtAuthenticationFilter;
+        this.logoutHandler = logoutHandler;
+    }
+
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+
+        return http
+                .csrf(AbstractHttpConfigurer::disable)
+                .authorizeHttpRequests(
+                        req -> req.requestMatchers("/login/**", "/register/**", "/refresh_token/**", "/activate/*", "/**")
+                                .permitAll()
+                                .requestMatchers("/hr_manager/**").hasAuthority("HRManager")
+                                .requestMatchers("/director/**").hasAuthority("HRManager")
+                                .anyRequest()
+                                .authenticated()
+                ).userDetailsService(userDetailsServiceImp)
+                .sessionManagement(session -> session
+                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+                .exceptionHandling(
+                        e -> e.accessDeniedHandler(
+                                        (request, response, accessDeniedException) -> response.setStatus(403)
+                                )
+                                .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED)))
+                .logout(l -> l
+                        .logoutUrl("/logout")
+                        .addLogoutHandler(logoutHandler)
+                        .logoutSuccessHandler((request, response, authentication) -> SecurityContextHolder.clearContext()
+                        ))
+                .build();
+
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception {
+        return configuration.getAuthenticationManager();
+    }
+
+}
+
+## Развертывание
+
+Dockerfile для сервиса на Java:
+
+### Используем официальный образ OpenJDK
+FROM openjdk:11-jre-slim
+
+### Устанавливаем рабочую директорию
+WORKDIR /app
+
+### Копируем JAR файл приложения
+COPY target/my-java-app.jar app.jar
+
+### Указываем команду для запуска приложения
+CMD ["java", "-jar", "app.jar"]
+Docker-compose:
+
+version: '3.9'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - DB_HOST=postgres
+      - DB_USER=app_user
+      - DB_PASSWORD=app_password
+      - DB_NAME=app_db
+      - REDIS_HOST=redis
+      - NATS_URL=nats:4222
+    depends_on:
+      - postgres
+      - redis
+      - nats
+
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: app_user
+      POSTGRES_PASSWORD: app_password
+      POSTGRES_DB: app_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  redis:
+    image: redis:7
+    ports:
+      - "6379:6379"
+
+  nats:
+    image: nats:2.9
+    ports:
+      - "4222:4222"
+    environment:
+      - JS_ENABLE=true # Включение JetStream
+
+volumes:
+  postgres_data:
+ 
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/mydb
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: password
+    depends_on:
+      - db
+
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_DATABASE: mydb
+      MYSQL_ROOT_PASSWORD: password
+    ports:
+      - "3306:3306"
 
