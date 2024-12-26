@@ -374,105 +374,6 @@
         }
       }
     },
-    "/api/v1/resume/{id}": {
-      "get": {
-        "tags": [
-          "resume-controller"
-        ],
-        "operationId": "getResume",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/Resume"
-                }
-              }
-            }
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "resume-controller"
-        ],
-        "operationId": "deleteResume",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/Resume"
-                }
-              }
-            }
-          }
-        }
-      },
-      "patch": {
-        "tags": [
-          "resume-controller"
-        ],
-        "operationId": "updateResume",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Resume"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/Resume"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/api/v1/interview/{id}": {
       "get": {
         "tags": [
@@ -892,29 +793,6 @@
         }
       }
     },
-    "/api/v1/resumes": {
-      "get": {
-        "tags": [
-          "resume-controller"
-        ],
-        "operationId": "getResumes",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Resume"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/api/v1/interviews": {
       "get": {
         "tags": [
@@ -961,6 +839,142 @@
         }
       }
     },
+    "/api/v1/employee/{id}/vacancies": {
+      "get": {
+        "tags": [
+          "employee-controller"
+        ],
+        "operationId": "getVacanciesByEmployee",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Vacancy"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/employee/{id}/resumes": {
+      "get": {
+        "tags": [
+          "employee-controller"
+        ],
+        "operationId": "getResumesByEmployee",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Resume"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/employee/{id}/interviews": {
+      "get": {
+        "tags": [
+          "employee-controller"
+        ],
+        "operationId": "getInterviewsByEmployee",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Interview"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/employee/{id}/candidates": {
+      "get": {
+        "tags": [
+          "employee-controller"
+        ],
+        "operationId": "getCandidatesByEmployee",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Candidate"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/departments": {
       "get": {
         "tags": [
@@ -984,6 +998,74 @@
         }
       }
     },
+    "/api/v1/department/{id}/employees": {
+      "get": {
+        "tags": [
+          "department-controller"
+        ],
+        "operationId": "getEmployeesByDepartment",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Employee"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/department/{id}/candidates": {
+      "get": {
+        "tags": [
+          "department-controller"
+        ],
+        "operationId": "getCandidatesByDepartment",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Candidate"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/candidates": {
       "get": {
         "tags": [
@@ -999,6 +1081,71 @@
                   "type": "array",
                   "items": {
                     "$ref": "#/components/schemas/Candidate"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/candidate/{id}/resume": {
+      "get": {
+        "tags": [
+          "candidate-controller"
+        ],
+        "operationId": "getResumeByCandidate",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Resume"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/candidate/{id}/interviews": {
+      "get": {
+        "tags": [
+          "candidate-controller"
+        ],
+        "operationId": "getInterviewsByCandidate",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Interview"
                   }
                 }
               }
@@ -1036,176 +1183,76 @@
           }
         }
       }
+    },
+    "/api/v1/resume/{id}": {
+      "delete": {
+        "tags": [
+          "resume-controller"
+        ],
+        "operationId": "deleteResume",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Resume"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
     "schemas": {
-      "Candidate": {
-        "type": "object",
-        "properties": {
-          "candidateID": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "fullName": {
-            "type": "string"
-          },
-          "phone": {
-            "type": "string"
-          },
-          "address": {
-            "type": "string"
-          },
-          "email": {
-            "type": "string"
-          },
-          "resume": {
-            "$ref": "#/components/schemas/Resume"
-          },
-          "interview": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Interview"
-            }
-          },
-          "employee": {
-            "$ref": "#/components/schemas/Employee"
-          }
-        }
-      },
-      "Department": {
-        "required": [
-          "name"
-        ],
+      "Vacancy": {
         "type": "object",
         "properties": {
           "id": {
             "type": "integer",
             "format": "int64"
           },
-          "name": {
+          "jobTitle": {
             "type": "string"
           },
-          "description": {
+          "jobDescription": {
             "type": "string"
           },
-          "employees": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Employee"
-            }
-          }
-        }
-      },
-      "Employee": {
-        "required": [
-          "email"
-        ],
-        "type": "object",
-        "properties": {
-          "employeeID": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "fullName": {
+          "workExperience": {
             "type": "string"
           },
-          "contactInfo": {
+          "education": {
             "type": "string"
           },
-          "roles": {
-            "type": "string",
-            "enum": [
-              "Director",
-              "HRManager"
-            ]
-          },
-          "username": {
+          "skills": {
             "type": "string"
           },
-          "email": {
+          "language": {
             "type": "string"
           },
-          "lastLoginDate": {
+          "creationDate": {
             "type": "string",
             "format": "date-time"
-          },
-          "registrationDate": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "user": {
-            "$ref": "#/components/schemas/User"
-          },
-          "department": {
-            "$ref": "#/components/schemas/Department"
-          },
-          "candidates": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Candidate"
-            }
-          },
-          "vacancies": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Vacancy"
-            }
-          },
-          "interviews": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Interview"
-            }
-          },
-          "resumes": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Resume"
-            }
-          }
-        }
-      },
-      "GrantedAuthority": {
-        "type": "object",
-        "properties": {
-          "authority": {
-            "type": "string"
-          }
-        }
-      },
-      "Interview": {
-        "type": "object",
-        "properties": {
-          "interviewID": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "interviewName": {
-            "type": "string"
-          },
-          "date_time": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "type": {
-            "type": "string"
-          },
-          "report": {
-            "type": "string"
-          },
-          "employee": {
-            "$ref": "#/components/schemas/Employee"
-          },
-          "candidate": {
-            "$ref": "#/components/schemas/Candidate"
           }
         }
       },
       "Resume": {
         "type": "object",
         "properties": {
-          "resumeID": {
+          "id": {
             "type": "integer",
             "format": "int64"
           },
@@ -1216,12 +1263,14 @@
                 "type": "object"
               }
             }
-          },
-          "candidate": {
-            "$ref": "#/components/schemas/Candidate"
-          },
-          "employee": {
-            "$ref": "#/components/schemas/Employee"
+          }
+        }
+      },
+      "GrantedAuthority": {
+        "type": "object",
+        "properties": {
+          "authority": {
+            "type": "string"
           }
         }
       },
@@ -1295,10 +1344,16 @@
               "$ref": "#/components/schemas/Token"
             }
           },
-          "employee": {
-            "$ref": "#/components/schemas/Employee"
-          },
           "enabled": {
+            "type": "boolean"
+          },
+          "accountNonExpired": {
+            "type": "boolean"
+          },
+          "credentialsNonExpired": {
+            "type": "boolean"
+          },
+          "accountNonLocked": {
             "type": "boolean"
           },
           "authorities": {
@@ -1306,49 +1361,6 @@
             "items": {
               "$ref": "#/components/schemas/GrantedAuthority"
             }
-          },
-          "credentialsNonExpired": {
-            "type": "boolean"
-          },
-          "accountNonExpired": {
-            "type": "boolean"
-          },
-          "accountNonLocked": {
-            "type": "boolean"
-          }
-        }
-      },
-      "Vacancy": {
-        "type": "object",
-        "properties": {
-          "vacancyID": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "jobTitle": {
-            "type": "string"
-          },
-          "jobDescription": {
-            "type": "string"
-          },
-          "workExperience": {
-            "type": "string"
-          },
-          "education": {
-            "type": "string"
-          },
-          "skills": {
-            "type": "string"
-          },
-          "language": {
-            "type": "string"
-          },
-          "creationDate": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "employee": {
-            "$ref": "#/components/schemas/Employee"
           }
         }
       },
@@ -1363,6 +1375,154 @@
           },
           "message": {
             "type": "string"
+          }
+        }
+      },
+      "Interview": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "interviewName": {
+            "type": "string"
+          },
+          "date_time": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "type": {
+            "type": "string"
+          },
+          "report": {
+            "type": "string"
+          }
+        }
+      },
+      "Candidate": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "fullName": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "resume": {
+            "$ref": "#/components/schemas/Resume"
+          },
+          "interviews": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Interview"
+            }
+          }
+        }
+      },
+      "Employee": {
+        "required": [
+          "email"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "fullName": {
+            "type": "string"
+          },
+          "contactInfo": {
+            "type": "string"
+          },
+          "roles": {
+            "type": "string",
+            "enum": [
+              "Director",
+              "HRManager"
+            ]
+          },
+          "username": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "lastLoginDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "registrationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "user": {
+            "$ref": "#/components/schemas/User"
+          },
+          "candidates": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Candidate"
+            }
+          },
+          "vacancies": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Vacancy"
+            }
+          },
+          "interviews": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Interview"
+            }
+          },
+          "resumes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Resume"
+            }
+          }
+        }
+      },
+      "Department": {
+        "required": [
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "employees": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Employee"
+            }
+          },
+          "candidates": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Candidate"
+            }
           }
         }
       }
