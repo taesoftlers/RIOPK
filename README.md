@@ -55,8 +55,7 @@
 ### Схема данных
 
 Схема данных программного средства
-![физическая модель](https://github.com/user-attachments/assets/053c596d-c4b4-4aee-aba3-f9ad60430e00)
-
+![физическая модель](![123](https://github.com/user-attachments/assets/e216ca07-3d08-47b9-969b-7ebeee5b6dbc))
 
 ## Пользовательский интерфейс
 
