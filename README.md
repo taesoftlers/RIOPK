@@ -59,6 +59,24 @@
 
 ## Пользовательский интерфейс
 
+UI Kit для программного средства 
+![ui kit](https://github.com/user-attachments/assets/d6e4c41d-c6ef-4dc8-b5ee-086148b92cb2)
+
+### User-flow диаграммы
+
+User-flow диаграмма программного средства (Hr-менеджер)
+![user-flow1](https://github.com/user-attachments/assets/74ac9839-e8ae-4497-892d-65b6b77290b6)
+
+
+User-flow диаграмма программного средства (Руководитель отдела)
+![user-flow2](https://github.com/user-attachments/assets/d9dbaef9-e3bf-48a4-97e7-d0ec6c223502)
+
+
+
+User-flow диаграмма программного средства (Технический специалист)
+![user-flow3](https://github.com/user-attachments/assets/8a4db990-be25-4816-b1ec-4db9ac11fbfa)
+
+
 ### Примеры экранов UI
 
 ![image](https://github.com/user-attachments/assets/b17c6434-387a-47f8-8210-823f21f48a86)
@@ -74,24 +92,6 @@
 ![image](https://github.com/user-attachments/assets/1155b5ae-326e-4715-aa3a-f8854e621ebd)
 
 ![image](https://github.com/user-attachments/assets/accdf24d-9258-438a-8bb1-72a84561f9a0)
-
-UI Kit для программного средства 
-![ui kit](https://github.com/user-attachments/assets/d6e4c41d-c6ef-4dc8-b5ee-086148b92cb2)
-
-### User-flow диаграммы
-
-User-flow диаграмма программного средства (Hr-менеджер)
-![user-flow (hr-менеджер)](https://github.com/user-attachments/assets/323eb2c6-7cc2-406d-8807-779e4ece5eae)
-
-
-User-flow диаграмма программного средства (Руководитель отдела)
-![user-flow (руководитель)](https://github.com/user-attachments/assets/21c42c37-4900-4e7d-ac1d-9140f3556893)
-
-
-User-flow диаграмма программного средства (Технический специалист)
-![user-flow (тех  специалист)](https://github.com/user-attachments/assets/e3b177af-f299-46b8-adbc-cfdfe7b8c81d)
-
-
 ## Документация
 
 ![image](https://github.com/user-attachments/assets/15b6bf92-3c6a-4666-8f04-d6c9b206a638)
