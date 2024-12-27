@@ -1,0 +1,29 @@
+spring:
+    datasource:
+        url: jdbc:mysql://localhost:3306/hireease
+        username: root
+        password: xeZdid-heqge2-cendir
+        driver-class-name: com.mysql.cj.jdbc.Driver
+    jpa:
+        hibernate:
+            ddl-auto: update
+#        show-sql: true
+        properties:
+            hibernate:
+                format_sql: true
+        database: mysql
+        database-platform: org.hibernate.dialect.MySQL8Dialect
+    mail:
+        host: smtp.yandex.ru
+        username: a.zastupnevich@yandex.ru
+        password: fbobmbomvuweiemw
+        port: 465
+        protocol: smtps
+
+
+application:
+    security:
+        jwt:
+            secret-key: 4bb6d1dfbafb64a681139d1586b6f1160d18159afd57c8c79136d7490630407c
+            access-token-expiration: 1800000000
+            refresh-token-expiration: 2400000000
